@@ -7,7 +7,7 @@ const right = document.getElementById("right")
 
 function reqListener () {
   //remove onclick from pullcord
-  //pullcord.removeEventListener("click", onClick);
+  pullcord.removeEventListener("click", onClick);
   
   //set fact text
   const res = JSON.parse(this.responseText);
@@ -37,8 +37,10 @@ function reqListener () {
 
 
     //setTimeout to add onclick back to pullcord
-    //pullcord.addEventListener("click", onClick);
-  } 
+    setTimeout(()=> {
+          pullcord.addEventListener("click", onClick);
+        }, 3000) 
+    } 
 }
 
 
