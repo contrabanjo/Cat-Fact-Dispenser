@@ -1,61 +1,44 @@
-const factContainer = document.getElementById("fact");
-
-//get elements to animate
-const left = document.getElementById("left")
-const right = document.getElementById("right")
-
-
-function reqListener () {
-  //remove onclick from pullcord
+function onClick(e){
+  //make pullcord unclickable while cat fact is updating
   pullcord.removeEventListener("click", onClick);
   
-  //set fact text
-  const res = JSON.parse(this.responseText);
-  const fact = res["text"]
-  let n = Math.floor(Math.random() * 16);  
+  updateCatFact();
 
-  //call again if the fact is too short.
-  if (fact.split(" ").length < 10) {
-      console.log("fact too short");
-      onClick();
-  } else {
-     //change the fact only if it cannot be seen
-     if (left.classList.contains("left-open")){
-     	setTimeout(()=> {
-          factContainer.innerHTML = fact;
-        }, 3000)        
-     } else {
-	factContainer.innerHTML = fact
-	document.getElementById('center').style.backgroundImage = 'url("http://placekitten.com/g/800/800?image=' + n + '")';  
-     }
-  
-    //add animation to curtains
-    left.classList.toggle("left-open");
-    right.classList.toggle("right-open");
-    left.classList.toggle("left-close");
-    right.classList.toggle("right-close"); 
+  setTimeout(()=> {
+        pullcord.addEventListener("click", onClick);
+  }, 3000) 
+}
 
+function animateCurtains(){
+  const left = document.getElementById("left")
+  const right = document.getElementById("right")  
 
-    //setTimeout to add onclick back to pullcord
-    setTimeout(()=> {
-          pullcord.addEventListener("click", onClick);
-        }, 3000) 
-    } 
+  left.classList.toggle("left-close");
+  right.classList.toggle("right-close");
+
+  left.classList.toggle("left-open");
+  right.classList.toggle("right-open");  
+}
+
+function updateCatFact(){
+   const factContainer = document.getElementById("fact");
+   Promise.all([
+     fetch("https://cat-fact.herokuapp.com/facts/random?amount=1").then(value => value.json()),
+     fetch("https://cataas.com/cat/gif?json=true").then(value => value.json())
+    ])
+    .then(values => {
+       if (!values[0]["status"].verified) {
+          updateCatFact();  
+       } else {
+          if (!document.getElementById('left').classList.contains("left-open")){
+            factContainer.innerHTML = values[0]["text"];
+            document.getElementById('center').style.backgroundImage = 'url("' + "https://cataas.com/" + values[1]["url"] + '")';
+          }
+         animateCurtains();
+       }
+     }) 
 }
 
 
 const pullcord = document.getElementById("pullcord");
-
-function onClick(e){ 
-  //const picReq = new XMLHttpRequest();
-  //picReq.open("GET", "https://cataas.com/cat/gif?json=true");
-  //picReq.addEventListener("load", reqListener);
-  //picReq.send();  
-
-  const factReq = new XMLHttpRequest();
-  factReq.open("GET", "https://cat-fact.herokuapp.com/facts/random?amount=1");
-  factReq.addEventListener("load", reqListener);
-  factReq.send();
-}
-
 pullcord.addEventListener("click", onClick);
