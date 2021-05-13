@@ -1,7 +1,9 @@
 # Cat-Fact-Generator
 A simple project to understand GET requests and CSS animation. 
 
-Sources:   
+
+Sources: 
+
 Cat Facts API  
 https://alexwohlbruck.github.io/cat-facts/  
 
