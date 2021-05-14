@@ -46,11 +46,11 @@ html, body {
   background: #fff9f0;
   width: 51%;
   height: 100%;
+  position: absolute;
 }
 
 #right {
-  display: grid;
-  align-content: center;
+  padding-top: 30%
 }
 
 #right span {
@@ -60,8 +60,12 @@ html, body {
   text-align: right;
 }
 
-.curtain {
-  position: absolute;
+.right {  
+  right: 0;
+}
+
+.left {
+  left: 0;
 }
 
 .filler {
@@ -144,9 +148,6 @@ html, body {
   z-index: 100;  
 }
 
-#pullcord img{
- 
-}
 
 #pullcord :active{
   transform: translate(0, 20px)
