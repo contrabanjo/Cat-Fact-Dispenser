@@ -34,6 +34,7 @@ function animateCurtains(){
 function updateCatFact(){
    const factContainer = document.getElementById("fact");
    Promise.all([
+     //this api was timing out, keeping code in case in the future I want to refactor to use it as a backup
      //fetch("http://cat-fact.herokuapp.com/facts/random?amount=1").then(value => value.json()),
      fetch("https://catfact.ninja/fact?max-length=140").then(value => value.json()),
      fetch("https://cataas.com/cat/gif?json=true").then(value => value.json())
