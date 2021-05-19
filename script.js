@@ -1,3 +1,15 @@
+function handleOrientation(){
+  console.log(window.screen.width);
+  console.log(window.screen.height);
+  const warning = document.getElementById("display-warning");
+  if (window.screen.width < window.screen.height){
+    warning.innerHTML = "You may want to rotate your device to get the best experience while viewing this site."
+  } else {
+    warning.innerHTML = "";
+  }
+}
+window.addEventListener("deviceorientation", handleOrientation, true);
+
 function onClick(e){
   //make pullcord unclickable while cat fact is updating
   pullcord.removeEventListener("click", onClick);
@@ -34,21 +46,15 @@ function animateCurtains(){
 function updateCatFact(){
    const factContainer = document.getElementById("fact");
    Promise.all([
-     //this api was timing out, keeping code in case in the future I want to refactor to use it as a backup
-     //fetch("http://cat-fact.herokuapp.com/facts/random?amount=1").then(value => value.json()),
      fetch("https://catfact.ninja/fact?max-length=140").then(value => value.json()),
      fetch("https://cataas.com/cat/gif?json=true").then(value => value.json())
     ])
     .then(values => {
-       //if (!values[0]["status"].verified) {
-       //   updateCatFact();  
-       //} else {
           if (!document.getElementById('left').classList.contains("left-open")){
             factContainer.innerHTML = values[0]["fact"];
             document.getElementById('center').style.backgroundImage = 'url("' + "https://cataas.com/" + values[1]["url"] + '")';
           }
           animateCurtains();
-       //}
      }).catch(err => console.log(err)); 
 }
 

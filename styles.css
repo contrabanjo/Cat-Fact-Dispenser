@@ -194,3 +194,7 @@ html, body {
   transform: translate(0, 15px)
 }
 
+#display-warning {
+ padding-bottom: 50%;
+ font-weight: bold;
+}
