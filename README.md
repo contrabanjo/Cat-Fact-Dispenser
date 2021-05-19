@@ -5,7 +5,7 @@ A simple project to understand GET requests and CSS animation. Displays random c
 ### Sources: 
 
 Cat Facts API  
-https://alexwohlbruck.github.io/cat-facts/  
+https://catfact.ninja/  
 
 CATAAS (Cat As A Service)  
 https://cataas.com/
