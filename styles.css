@@ -143,13 +143,35 @@ html, body {
 
 
 #pullcord {
-  position: absolute;
-  transform: translate(0, -50px);
+  position: relative;
+  height: 100%;
   z-index: 100;  
 }
 
+#pullcord img:first-of-type {
+  transform: translate(0, -10%);
+  height: 80%;
+}
 
-#pullcord :active{
-  transform: translate(0, 20px)
+#paw {
+  height: 35%;
+  position: absolute;
+  bottom: -35%;
+  right: 0;
+}
+
+#pullcord:hover #paw{
+  bottom: 0;
+  transition: bottom 1s;
+}
+
+#pullcord:not(:hover) #paw{
+  bottom: -35%;
+  transition: bottom 1s;
+  
+}
+
+#pullcord:active{
+  transform: translate(0, 15px)
 }
 
