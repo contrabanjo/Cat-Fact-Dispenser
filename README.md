@@ -1,5 +1,6 @@
-# Cat-Fact-Generator
-A simple project to understand GET requests and CSS animation. Displays random cat facts with an accompanying gif.
+# Cat-Fact-Viewer
+Displays random cat facts with an accompanying gif.
+A simple project made to understand the underlying principles of plain javascript, HTML and CSS.
 
 
 ### Sources: 
