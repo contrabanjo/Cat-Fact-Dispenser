@@ -8,17 +8,19 @@ html, body {
 
 #fact-container{
     position: relative;
+    height: 100%;
+    
     background: bisque;
+    color: #c78100;
+    
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 0.5fr 1.61803398875fr 0.5fr;
     justify-content: center;
-    font-family: sans-serif;
-    font-size: calc(1.5vw + 1.5vh);
     
-    text-align: left;
+    font-family: sans-serif;
+    font-size: calc(1vw + 1vh);    
 
-    height: 100%;
     overflow: hidden;
 }
 
@@ -27,6 +29,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
     background: url(https://cataas.com/cat/gif);
     background-size: cover;
     background-position: center;
@@ -37,7 +40,11 @@ html, body {
 #center p {
   background: #00000057;
   color: white;
+  
   font-weight: bolder;
+  font-size: calc(1.5vw + 1.5vh);  
+  text-align: left;
+  
   padding: 40% 30% 2% 10%;
 }
 
@@ -55,8 +62,6 @@ html, body {
 
 #right span {
   display: block;
-  color: #c78100;
-  font-size: calc(1vw + 1vh);
   text-align: right;
 }
 
@@ -70,6 +75,21 @@ html, body {
 
 .filler {
   background: #fff9f0
+}
+
+.filler:first-child{
+  font-size: calc(0.8vw + 0.8vh);
+  display: grid;
+  align-content: end;
+  padding: 10px; 
+}
+
+.filler a {
+  color:  #c78100; 
+}
+
+.filler p {
+  margin: 0;
 }
 
 .left-open {
@@ -157,7 +177,7 @@ html, body {
   height: 35%;
   position: absolute;
   bottom: -35%;
-  right: 0;
+  left: 0;
 }
 
 #pullcord:hover #paw{
@@ -168,7 +188,6 @@ html, body {
 #pullcord:not(:hover) #paw{
   bottom: -35%;
   transition: bottom 1s;
-  
 }
 
 #pullcord:active{
