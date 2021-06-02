@@ -1,14 +1,9 @@
-function handleOrientation(){
-  console.log(window.screen.width);
-  console.log(window.screen.height);
-  const warning = document.getElementById("display-warning");
-  if (window.screen.width < window.screen.height){
-    warning.innerHTML = "You may want to rotate your device to get the best experience while viewing this site."
-  } else {
-    warning.innerHTML = "";
-  }
+window.addEventListener("touchstart", onFirstTouch, true);
+
+function onFirstTouch(){
+  //TODO add touch event that moves the pullcord & animates the cat paw  
+  window.removeEventListener('touchstart', onFirstTouch, false);
 }
-window.addEventListener("deviceorientation", handleOrientation, true);
 
 function onClick(e){
   //make pullcord unclickable while cat fact is updating
